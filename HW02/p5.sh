@@ -6,4 +6,4 @@
 #SBATCH -- output = parallel_matmul . output
 cd $SLURM_SUBMIT_DIR
 g ++ -O 2 - std = c ++ 1 7 parallel_matmul . cpp -o parallel_matmul - pthread
-./ parallel_matmul
+./parallel_matmul

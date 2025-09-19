@@ -6,4 +6,4 @@
 #SBATCH -- output = race_conditions . output
 cd $SLURM_SUBMIT_DIR
 g ++ -O 2 - std = c ++ 1 7 race_conditions . cpp -o race_conditions - pthread
-./ race_conditions
+./race_conditions
