@@ -1,8 +1,8 @@
 
-# include < iostream >
-# include < thread >
-# include < vector >
-void hello ( int id , int total ) {
+# include <iostrea >
+# include <thread>
+# include <vector>
+void hello (int id , int total ) {
 std :: cout << " Hello from thread " << id << " of " << total << " \ n " ;
 }
 int main () {

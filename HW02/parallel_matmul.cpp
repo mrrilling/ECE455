@@ -1,8 +1,8 @@
-# include < iostream >
-# include < vector >
-# include < thread >
-# include < random >
-# include < chrono >
+# include <iostream>
+# include <vector>
+# include <thread>
+# include <random>
+# include <chrono>
 void multiply_block ( const std :: vector < double > &A ,
 const std :: vector < double > &B ,
 std :: vector < double > &C ,
@@ -41,5 +41,5 @@ auto end_time = std :: chrono :: high_resolution_clock :: now () ;
 std :: cout << " Parallel multiplication took "
 << std :: chrono :: duration < double >( end_time - start_time ) .
 count ()
-<< " s \ n " ;
+<< " s\n " ;
 }

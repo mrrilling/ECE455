@@ -1,9 +1,9 @@
-# include < iostream >
-# include < thread >
-# include < vector >
-# include < mutex >
-# include < atomic >
-# include < chrono >
+# include <iostream>
+# include <thread>
+# include <vector>
+# include <mutex>
+# include <atomic>
+# include <chrono>
 constexpr int ITER = 1 0 0 0 0 0 ;
 void inc_no_lock ( int & counter ) {
 for ( int i = 0 ; i < ITER ; ++ i ) counter ++; // data race !
@@ -37,7 +37,7 @@ const int expected = T * ITER ;
 auto ms = run_and_time (T , [&]{ inc_no_lock ( counter ) ; }) ;
 std :: cout << " [ No lock ] counter = " << counter
 << " ( expected " << expected << " ) , "
-<< ms << " ms \ n " ;
+<< ms << " ms\n " ;
 }
 { // Mutex
 int counter = 0 ;
@@ -45,14 +45,14 @@ std :: mutex m ;
 auto ms = run_and_time (T , [&]{ inc_with_mutex ( counter , m ) ; }) ;
 std :: cout << " [ Mutex ] counter = " << counter
 << " ( expected " << expected << " ) , "
-<< ms << " ms \ n " ;
+<< ms << " ms\n " ;
 }
 { // Atomic
 std :: atomic < int > counter { 0 };
 auto ms = run_and_time (T , [&]{ inc_atomic ( counter ) ; }) ;
 std :: cout << " [ Atomic ] counter = " << counter . load ()
 << " ( expected " << expected << " ) , "
-<< ms << " ms \ n " ;
+<< ms << " ms\n " ;
 }
 return 0 ;
 }

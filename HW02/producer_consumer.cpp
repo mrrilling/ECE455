@@ -1,8 +1,8 @@
-# include < iostream >
-# include < queue >
-# include < thread >
-# include < mutex >
-# include < condition_variable >
+# include <iostream>
+# include <queue>
+# include <thread>
+# include <mutex>
+# include <condition_variable>
 constexpr int MAX_ITEMS = 1 0 ;
 std :: queue < int > q ;
 std :: mutex m ;
@@ -13,7 +13,7 @@ for ( int i = 0 ; i < 1 0 0 ; ++ i ) {
 std :: unique_lock < std :: mutex > lk ( m ) ;
 cv . wait ( lk , []{ return ( int ) q . size () < MAX_ITEMS ; }) ;
 q . push ( i ) ;
-std :: cout << " Produced : " << i << " \ n " ;
+std :: cout << " Produced : " << i <<  "\n" ;
 lk . unlock () ;
 cv . notify_all () ;
 }
@@ -30,7 +30,7 @@ cv . wait ( lk , []{ return ! q . empty () || done ; }) ;
 if ( q . empty () && done ) break ;
 int item = q . front () ; q . pop () ;
 lk . unlock () ;
-std :: cout << " Consumed : " << item << " \ n " ;
+std :: cout << " Consumed : " << item << " \n" ;
 cv . notify_all () ;
 }
 }

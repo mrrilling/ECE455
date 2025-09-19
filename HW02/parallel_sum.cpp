@@ -1,9 +1,9 @@
-# include < iostream >
-# include < vector >
-# include < thread >
-# include < numeric >
-# include < random >
-# include < chrono >
+# include <iostream>
+# include <vector>
+# include <thread>
+# include <numeric>
+# include <random>
+# include <chrono>
 void partial_sum ( const std :: vector < int > & data ,
 size_t start , size_t end , long long & out ) {
 out = std :: accumulate ( data . begin () + start , data . begin () + end , 0 LL ) ;
@@ -39,8 +39,8 @@ auto p 1 = std :: chrono :: high_resolution_clock :: now () ;
 std :: chrono :: duration < double > t_base = t 1 - t 0 ;
 std :: chrono :: duration < double > t_par = p 1 - p 0 ;
 std :: cout << " Baseline sum : " << baseline
-<< " Time : " << t_base . count () << " s \ n " ;
+<< " Time : " << t_base . count () << " s\n " ;
 std :: cout << " Parallel sum : " << total
-<< " Time : " << t_par . count () << " s \ n " ;
+<< " Time : " << t_par . count () << " s\n " ;
 return 0 ;
 }
