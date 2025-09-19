@@ -40,8 +40,8 @@ int main()
     std ::chrono ::duration<double> t_base = t1 - t0;
     std ::chrono ::duration<double> t_par = p1 - p0;
     std ::cout << " Baseline sum : " << baseline
-              << " Time : " << t_base.count() << " s\n ";
+              << " Time : " << t_base.count() << " s\n";
     std ::cout << " Parallel sum : " << total
-              << " Time : " << t_par.count() << " s\n ";
+              << " Time : " << t_par.count() << " s\n";
     return 0;
 }
