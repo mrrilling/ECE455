@@ -35,7 +35,7 @@ int run_and_time(int T, F &&fn)
     for (auto &t : ths)
         t.join();
     auto t1 = std::chrono::high_resolution_clock::now();
-    return std::chrono::duration<double, std::milli>(t 1 - t 0).count();
+    return std::chrono::duration<double, std::milli>(t1 - t0).count();
 }
 int main()
 {
@@ -65,6 +65,6 @@ int main()
         std::cout << " [ Atomic ] counter = " << counter.load()
                   << " ( expected " << expected << " ) , "
                   << ms << " ms\n";
-    }
+    } 
     return 0;
 }
