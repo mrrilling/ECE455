@@ -8,3 +8,4 @@ cd $SLURM_SUBMIT_DIR
 g++ -fopenmp parallel_sum.cpp -o parallel_sum
 ./parallel_sum
 
+
