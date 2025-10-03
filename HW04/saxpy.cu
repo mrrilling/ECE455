@@ -22,7 +22,7 @@ int main()
     cudaMalloc(&d_y, size);
     cudaMemcpy(d_x, x, size, cudaMemcpyHostToDevice);
     cudaMemcpy(d_y, y, size, cudaMemcpyHostToDevice);
-    int threadsPerBlock = 2 5 6;
+    int threadsPerBlock = 256;
     int blocksPerGrid = (N + threadsPerBlock - 1) / threadsPerBlock;
     saxpy<<<blocksPerGrid, threadsPerBlock>>>(N, 2.0f, d_x, d_y);
     cudaMemcpy(y, d_y, size, cudaMemcpyDeviceToHost);
