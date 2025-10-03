@@ -17,8 +17,8 @@ int main()
     float *h_C = (float *)malloc(size);
     for (int i = 0; i < N; i++)
     {
-        h_A[i] = 1.0 f;
-        h_B[i] = 2.0 f;
+        h_A[i] = 1.0f;
+        h_B[i] = 2.0f;
     }
     float *d_A, *d_B, *d_C;
     cudaMalloc(&d_A, size);
