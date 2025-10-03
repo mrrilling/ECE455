@@ -6,7 +6,6 @@
 #SBATCH --gpus-per-task=1
 #SBATCH --time=00:01:00
 #SBATCH --output=vector_add_streams.output
-
 cd $SLURM_SUBMIT_DIRls
 module load nvidia/cuda
 nvcc vector_add_streams.cu -o vector_add_streams
