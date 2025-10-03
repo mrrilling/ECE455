@@ -17,8 +17,8 @@ int main()
     float *h_C = (float *)malloc(size);
     for (int i = 0; i < N; i++)
     {
-        h_A[i] = 1 .0 f;
-        h_B[i] = 2 .0 f;
+        h_A[i] = 1.0 f;
+        h_B[i] = 2.0 f;
     }
     float *d_A, *d_B, *d_C;
     cudaMalloc(&d_A, size);
@@ -26,7 +26,7 @@ int main()
     cudaMalloc(&d_C, size);
     cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice);
     cudaMemcpy(d_B, h_B, size, cudaMemcpyHostToDevice);
-    int threadsPerBlock = 2 5 6;
+    int threadsPerBlock = 256;
     int blocksPerGrid = (N + threadsPerBlock - 1) / threadsPerBlock;
     vector_add<<<blocksPerGrid, threadsPerBlock>>>(d_A, d_B, d_C, N);
     cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost);

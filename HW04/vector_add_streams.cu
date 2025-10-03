@@ -16,8 +16,8 @@ int main()
     C = (float *)malloc(size);
     for (int i = 0; i < N; i++)
     {
-        A[i] = 1 .0 f;
-        B[i] = 2 .0 f;
+        A[i] = 1.0 f;
+        B[i] = 2.0 f;
     }
     cudaMalloc(&d_A, size);
     cudaMalloc(&d_B, size);
@@ -29,10 +29,8 @@ int main()
     size_t half_size = size / 2;
     cudaMemcpyAsync(d_A, A, half_size, cudaMemcpyHostToDevice, stream 1);
     cudaMemcpyAsync(d_B, B, half_size, cudaMemcpyHostToDevice, stream 1);
-    cudaMemcpyAsync(d_A + half, A + half, half_size,
-                    cudaMemcpyHostToDevice, stream 2);
-    cudaMemcpyAsync(d_B + half, B + half, half_size,
-                    cudaMemcpyHostToDevice, stream 2);
+    cudaMemcpyAsync(d_A + half, A + half, half_size,cudaMemcpyHostToDevice, stream 2);
+    cudaMemcpyAsync(d_B + half, B + half, half_size,cudaMemcpyHostToDevice, stream 2);
     int threads = 2 5 6;
     int blocks_half = (half + threads - 1) / threads;
     vector_add<<<blocks_half, threads, 0, stream 1>>>(d_A, d_B, d_C, half);
