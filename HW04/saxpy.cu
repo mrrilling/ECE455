@@ -15,8 +15,8 @@ int main()
     y = (float *)malloc(size);
     for (int i = 0; i < N; i++)
     {
-        x[i] = 1 .0 f;
-        y[i] = 2 .0 f;
+        x[i] = 1.0f;
+        y[i] = 2.0f;
     }
     cudaMalloc(&d_x, size);
     cudaMalloc(&d_y, size);
@@ -24,7 +24,7 @@ int main()
     cudaMemcpy(d_y, y, size, cudaMemcpyHostToDevice);
     int threadsPerBlock = 2 5 6;
     int blocksPerGrid = (N + threadsPerBlock - 1) / threadsPerBlock;
-    saxpy<<<blocksPerGrid, threadsPerBlock>>>(N, 2 .0f, d_x, d_y);
+    saxpy<<<blocksPerGrid, threadsPerBlock>>>(N, 2.0f, d_x, d_y);
     cudaMemcpy(y, d_y, size, cudaMemcpyDeviceToHost);
     printf(" y [0] = %f\n ", y[0]);
     cudaFree(d_x);

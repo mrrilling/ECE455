@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <cuda_runtime.h>
 __global__ void vector_add(const float *A, const float *B, float *C, int N)
 {
     int i = blockIdx.x * blockDim.x + threadIdx.x;
@@ -16,8 +17,8 @@ int main()
     C = (float *)malloc(size);
     for (int i = 0; i < N; i++)
     {
-        A[i] = 1.0 f;
-        B[i] = 2.0 f;
+        A[i] = 1.0f;
+        B[i] = 2.0f;
     }
     cudaMalloc(&d_A, size);
     cudaMalloc(&d_B, size);
