@@ -26,7 +26,7 @@ int main()
     int blocksPerGrid = (N + threadsPerBlock - 1) / threadsPerBlock;
     saxpy<<<blocksPerGrid, threadsPerBlock>>>(N, 2.0f, d_x, d_y);
     cudaMemcpy(y, d_y, size, cudaMemcpyDeviceToHost);
-    printf(" y [0] = %f\n ", y[0]);
+    printf(" y[0]=%f\n ", y[0]);
     cudaFree(d_x);
     cudaFree(d_y);
     free(x);

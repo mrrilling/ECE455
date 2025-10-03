@@ -40,7 +40,7 @@ int main()
     cudaMemcpyAsync(C + half, d_C + half, half_size, cudaMemcpyDeviceToHost, stream 2);
     cudaStreamSyncronize(stream1);
     cudaStreamSyncronize(stream2);
-    printf(" C [0] = %f , C [N -1] = %f\n ", C[0], C[N - 1]);
+    printf("C[0]=%f , C[N -1]=%f\n ", C[0], C[N - 1]);
     cudaStreamDestroy(stream1);
     cudaStreamDestroy(stream2);
     cudaFree(d_A);

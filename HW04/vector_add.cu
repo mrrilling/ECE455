@@ -30,7 +30,7 @@ int main()
     int blocksPerGrid = (N + threadsPerBlock - 1) / threadsPerBlock;
     vector_add<<<blocksPerGrid, threadsPerBlock>>>(d_A, d_B, d_C, N);
     cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost);
-    printf(" C [0] = %f\n ", h_C[0]);
+    printf(" C[0]=%f\n ", h_C[0]);
     cudaFree(d_A);
     cudaFree(d_B);
     cudaFree(d_C);
