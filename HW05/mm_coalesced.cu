@@ -39,13 +39,11 @@ std::vector<T> create_rand_vector(size_t n)
     return vec;
 }
 
-// mat_1: m x n
-// mat_2: n x p
-// mat_3: m x p
+
 template <typename T>
 void mm(T const* mat_1, T const* mat_2, T* mat_3, size_t m, size_t n, size_t p)
 {
-    // Compute the cells in mat_3 sequentially.
+    
     for (size_t i{0}; i < m; ++i)
     {
         for (size_t j{0}; j < p; ++j)
@@ -70,13 +68,11 @@ __global__ void mm_coalesced_kernel(
     size_t n, 
     size_t p)
 {
-    // 2D block and 2D thread
-    // Each thread computes one cell in mat_3.
+   
     size_t j{blockIdx.x * blockDim.x + threadIdx.x};
     size_t i{blockIdx.y * blockDim.y + threadIdx.y};
 
-    // Do not process outside the matrix.
-    // Do not forget the equal sign!
+   
     if ((i >= m) || (j >= p))
     {
         return;
@@ -142,18 +138,18 @@ bool random_test_mm_cuda(size_t m, size_t n, size_t p)
 
     T *d_mat_1, *d_mat_2, *d_mat_4;
 
-    // Allocate device buffer.
+    
     checkCuda(cudaMalloc(&d_mat_1, sizeof(T) * mat_1_vec.size()));
     checkCuda(cudaMalloc(&d_mat_2, sizeof(T) * mat_2_vec.size()));
     checkCuda(cudaMalloc(&d_mat_4, sizeof(T) * mat_4_vec.size()));
 
-    // Copy data from host to device.
+   
     checkCuda(cudaMemcpy(d_mat_1, mat_1, sizeof(T) * mat_1_vec.size(),
                          cudaMemcpyHostToDevice));
     checkCuda(cudaMemcpy(d_mat_2, mat_2, sizeof(T) * mat_2_vec.size(),
                          cudaMemcpyHostToDevice));
 
-    // Run matrix multiplication on GPU.
+    
     mm_cuda(d_mat_1, d_mat_2, d_mat_4, m, n, p);
     cudaDeviceSynchronize();
     cudaError_t err{cudaGetLastError()};
@@ -165,11 +161,11 @@ bool random_test_mm_cuda(size_t m, size_t n, size_t p)
         std::exit(EXIT_FAILURE);
     }
 
-    // Copy data from device to host.
+    
     checkCuda(cudaMemcpy(mat_4, d_mat_4, sizeof(T) * mat_4_vec.size(),
                          cudaMemcpyDeviceToHost));
 
-    // Free device buffer.
+   
     checkCuda(cudaFree(d_mat_1));
     checkCuda(cudaFree(d_mat_2));
     checkCuda(cudaFree(d_mat_4));
@@ -235,7 +231,6 @@ float measure_latency_mm_cuda(size_t m, size_t n, size_t p, size_t num_tests,
     }
     checkCuda(cudaEventElapsedTime(&time, startEvent, stopEvent));
 
-    // Free device buffer.
     checkCuda(cudaFree(d_mat_1));
     checkCuda(cudaFree(d_mat_2));
     checkCuda(cudaFree(d_mat_4));
