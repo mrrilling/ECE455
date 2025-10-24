@@ -8,4 +8,4 @@
 cd $SLURM_SUBMIT_DIR
 module load nvidia/cuda
 nvcc reduce_shared.cu -o reduce_shared
-.reduce_shared
+./reduce_shared
